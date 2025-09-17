@@ -35,12 +35,12 @@ function AboutPage() {
                             Afro Gift Donations is a global humanitarian platform committed
                             to changing lives by connecting generous hearts with people and
                             communities in need around the world. We provide a secure,
-                            transparent, and trustworthy way to give — whether through
-                            financial donations, relief parcels, or special gift packages —
+                            transparent, and trustworthy way to give whether through
+                            financial donations, relief parcels, or special gift packages
                             ensuring every act of kindness makes a tangible difference.
                         </p>
                         <p>
-                            We are more than a donation platform. We are a movement — a call
+                            We are more than a donation platform. We are a movement a call
                             to action for leaders, philanthropists, corporations, and
                             individuals everywhere to partner in building a better world.
                         </p>
@@ -81,7 +81,7 @@ function AboutPage() {
                         <h5 className="fw-bold">Why We Exist</h5>
                         <p>
                             Poverty, hunger, lack of education, and crises are not limited
-                            to one nation or one continent — they affect us all. Afro Gift
+                            to one nation or one continent they affect us all. Afro Gift
                             Donations exists to bridge the gap between those with the means
                             to help and those with urgent needs, ensuring that help is
                             delivered efficiently, ethically, and effectively.
@@ -151,7 +151,7 @@ function AboutPage() {
                 <div className="text-center mb-5">
                     <h4 className="fw-bold mb-3">Our Global Impact</h4>
                     <p className="lead text-muted">
-                        Afro Gift Donations is building a worldwide network of hope —
+                        Afro Gift Donations is building a worldwide network of hope
                         supporting underprivileged children, empowering struggling
                         families, and restoring communities affected by disaster. Each
                         donation, no matter how small, becomes part of a bigger story of
