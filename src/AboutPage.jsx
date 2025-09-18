@@ -14,7 +14,6 @@ function AboutPage() {
     return (
         <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
             <div className="container text-dark">
-                {/* Breadcrumb Navigation */}
                 <div className="d-flex justify-content-end mb-4">
                     <span
                         style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}

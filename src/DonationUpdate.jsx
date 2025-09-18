@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DonationUpdate() {
+    const navigate = useNavigate();
+
     const donations = [
         {
             id: 1,
@@ -112,18 +115,30 @@ function DonationUpdate() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
     const totalPages = Math.ceil(donations.length / itemsPerPage);
-
     const indexOfLast = currentPage * itemsPerPage;
     const indexOfFirst = indexOfLast - itemsPerPage;
     const currentDonations = donations.slice(indexOfFirst, indexOfLast);
 
     return (
         <div className="container py-5">
-            <h1 className="fw-bold text-center mb-4">Donation Blogs</h1>
+            <div className="mb-4">
+                <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <h1 className="fw-bold text-dark mb-3 mb-md-0">Donation Blogs</h1>
+                    <div className="text-md-end">
+                        <span
+                            style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
+                            onClick={() => navigate("/")}
+                        >
+                            Home
+                        </span>{" "}
+                        / <span style={{ color: "#173321" }}>Blogs</span>
+                    </div>
+                </div>
+            </div>
 
             <div className="row g-4">
-                {currentDonations.map(donation => (
-                    <div className="col-md-4" key={donation.id}>
+                {currentDonations.map((donation) => (
+                    <div className="col-lg-4 col-md-6 col-12" key={donation.id}>
                         <div className="card shadow-sm border-0 h-100 rounded-4 overflow-hidden">
                             <a href={donation.image} target="_blank" rel="noopener noreferrer">
                                 <img
@@ -143,13 +158,14 @@ function DonationUpdate() {
                 ))}
             </div>
 
-
-            {/* Pagination */}
             <div className="d-flex justify-content-center mt-4">
                 <nav>
                     <ul className="pagination">
                         <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                            <button className="page-link" onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}>
+                            <button
+                                className="page-link"
+                                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                            >
                                 Prev
                             </button>
                         </li>
@@ -163,7 +179,10 @@ function DonationUpdate() {
                         ))}
 
                         <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                            <button className="page-link" onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}>
+                            <button
+                                className="page-link"
+                                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                            >
                                 Next
                             </button>
                         </li>
