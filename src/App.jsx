@@ -41,7 +41,7 @@ function App() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/update">
-                  Block
+                  Blogs
                 </Link>
               </li>
             </ul>
