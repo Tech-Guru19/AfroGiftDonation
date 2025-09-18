@@ -119,7 +119,7 @@ function DonationUpdate() {
 
     return (
         <div className="container py-5">
-            <h1 className="fw-bold text-center mb-4">Donation Blog</h1>
+            <h1 className="fw-bold text-center mb-4">Donation Blogs</h1>
 
             <div className="row g-4">
                 {currentDonations.map(donation => (

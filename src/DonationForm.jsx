@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function DonationForm() {
@@ -36,8 +35,9 @@ function DonationForm() {
         <div className="container py-5 mb-5">
             <div className="position-relative mb-4">
                 <h1 className="fw-bold text-dark text-center m-0 mb-5 mt-5">Donation Page</h1>
+
                 <div
-                    className="position-absolute"
+                    className="position-absolute d-none d-md-block"
                     style={{ top: "0", right: "0" }}
                 >
                     <span
@@ -48,17 +48,23 @@ function DonationForm() {
                     </span>{" "}
                     / <span style={{ color: "#173321" }}>Donation</span>
                 </div>
+
+                <div className="d-block d-md-none text-center mb-3">
+                    <span
+                        style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
+                        onClick={() => navigate("/")}
+                    >
+                        Home
+                    </span>{" "}
+                    / <span style={{ color: "#173321" }}>Donation</span>
+                </div>
             </div>
 
-
             <div className="row justify-content-center">
-                <div className="col-lg-7 col-md-9 mt-5">
+                <div className="col-lg-7 col-md-9 col-12 px-3">
                     <div className="card shadow-lg border-0 rounded-4">
-                        <div className="card-body p-5">
-                            <h2
-                                className="text-center fw-bold mb-4"
-                                style={{ color: "#173321" }}
-                            >
+                        <div className="card-body p-4 p-md-5">
+                            <h2 className="text-center fw-bold mb-4" style={{ color: "#173321" }}>
                                 Make a Donation
                             </h2>
 
@@ -77,10 +83,8 @@ function DonationForm() {
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit}>
-                                    <div className="mb-4">
-                                        <label className="form-label fw-semibold">
-                                            Donation Type
-                                        </label>
+                                    <div className="mb-3">
+                                        <label className="form-label fw-semibold">Donation Type</label>
                                         <select
                                             className="form-select"
                                             value={donationType}
@@ -96,9 +100,7 @@ function DonationForm() {
                                     {donationType === "parcel" && (
                                         <>
                                             <div className="mb-3">
-                                                <label className="form-label fw-semibold">
-                                                    Item Name
-                                                </label>
+                                                <label className="form-label fw-semibold">Item Name</label>
                                                 <input
                                                     type="text"
                                                     className="form-control"
@@ -110,9 +112,7 @@ function DonationForm() {
                                             </div>
 
                                             <div className="mb-3">
-                                                <label className="form-label fw-semibold">
-                                                    Item Description
-                                                </label>
+                                                <label className="form-label fw-semibold">Item Description</label>
                                                 <textarea
                                                     className="form-control"
                                                     rows="3"
@@ -124,16 +124,12 @@ function DonationForm() {
                                             </div>
 
                                             <div className="mb-3">
-                                                <label className="form-label fw-semibold">
-                                                    Upload File (Image/Video)
-                                                </label>
+                                                <label className="form-label fw-semibold">Upload File (Image/Video)</label>
                                                 <input type="file" className="form-control" />
                                             </div>
 
                                             <div className="mb-3">
-                                                <label className="form-label fw-semibold">
-                                                    Delivery Option
-                                                </label>
+                                                <label className="form-label fw-semibold">Delivery Option</label>
                                                 <select
                                                     className="form-select"
                                                     value={delivery}
@@ -149,9 +145,7 @@ function DonationForm() {
                                             {delivery === "pickup" && (
                                                 <>
                                                     <div className="mb-3">
-                                                        <label className="form-label fw-semibold">
-                                                            Address
-                                                        </label>
+                                                        <label className="form-label fw-semibold">Address</label>
                                                         <input
                                                             type="text"
                                                             className="form-control"
@@ -163,9 +157,7 @@ function DonationForm() {
                                                     </div>
 
                                                     <div className="mb-3">
-                                                        <label className="form-label fw-semibold">
-                                                            Country
-                                                        </label>
+                                                        <label className="form-label fw-semibold">Country</label>
                                                         <select
                                                             className="form-select"
                                                             value={country}
@@ -199,13 +191,10 @@ function DonationForm() {
                                         </div>
                                     )}
 
-
                                     {donationType === "parcel" && (
                                         <>
                                             <div className="mb-3">
-                                                <label className="form-label fw-semibold">
-                                                    Contact Phone
-                                                </label>
+                                                <label className="form-label fw-semibold">Contact Phone</label>
                                                 <input
                                                     type="tel"
                                                     className="form-control"
@@ -217,9 +206,7 @@ function DonationForm() {
                                             </div>
 
                                             <div className="mb-4">
-                                                <label className="form-label fw-semibold">
-                                                    Contact Email
-                                                </label>
+                                                <label className="form-label fw-semibold">Contact Email</label>
                                                 <input
                                                     type="email"
                                                     className="form-control"
@@ -234,10 +221,11 @@ function DonationForm() {
 
                                     {donationType === "parcel" && (
                                         <div className="d-grid">
-                                            <button type="submit" className="btn btn-primary btn-lg" style={{
-                                                backgroundColor: "#173321",
-                                                color: "white"
-                                            }} >
+                                            <button
+                                                type="submit"
+                                                className="btn btn-primary btn-lg"
+                                                style={{ backgroundColor: "#173321", color: "white" }}
+                                            >
                                                 Submit Donation
                                             </button>
                                         </div>
