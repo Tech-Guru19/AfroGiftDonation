@@ -3,6 +3,8 @@ import { Routes, Route, Link } from "react-router-dom";
 import DonationPage from "./DonationPage";
 import Homepage from "./Homepage";
 import AboutPage from "./AboutPage";
+import DonationUpdate from "./DonationUpdate";
+import NotFound from "./NotFound";
 
 function App() {
   return (
@@ -37,6 +39,11 @@ function App() {
                   Donate
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/update">
+                  Block
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -47,6 +54,8 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/donate" element={<DonationPage />} />
+          <Route path="/update" element={<DonationUpdate />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 

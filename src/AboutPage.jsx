@@ -14,6 +14,17 @@ function AboutPage() {
     return (
         <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
             <div className="container text-dark">
+                {/* Breadcrumb Navigation */}
+                <div className="d-flex justify-content-end mb-4">
+                    <span
+                        style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
+                        onClick={() => navigate("/")}
+                    >
+                        Home
+                    </span>{" "}
+                    / <span style={{ color: "#173321" }}>About</span>
+                </div>
+
                 <div className="text-center mb-5">
                     <h2 className="fw-bold display-5" style={{ color: "#173321" }}>
                         ABOUT US – Afro Gift Donations
@@ -183,7 +194,7 @@ function AboutPage() {
                         onMouseOut={(e) => (e.target.style.opacity = "1")}
                         onClick={() => navigate("/donate")}
                     >
-                            Make A Donate Today
+                        Make A Donate Today
                     </button>
                 </div>
             </div>
