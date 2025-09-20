@@ -5,7 +5,7 @@ function DonationUpdate() {
     const navigate = useNavigate();
 
     const donations = [
-        {
+       {
             id: 1,
             title: "Food Relief at Ibadan",
             date: "Sept 18, 2025 - 10:00 AM",
@@ -112,12 +112,18 @@ function DonationUpdate() {
 
     ];
 
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const filteredDonations = donations.filter(donation =>
+        donation.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
-    const totalPages = Math.ceil(donations.length / itemsPerPage);
+    const totalPages = Math.ceil(filteredDonations.length / itemsPerPage);
     const indexOfLast = currentPage * itemsPerPage;
     const indexOfFirst = indexOfLast - itemsPerPage;
-    const currentDonations = donations.slice(indexOfFirst, indexOfLast);
+    const currentDonations = filteredDonations.slice(indexOfFirst, indexOfLast);
 
     return (
         <div className="container py-5">
@@ -136,59 +142,88 @@ function DonationUpdate() {
                 </div>
             </div>
 
+            {/* 🔍 Search Bar */}
+            <div className="row mb-4">
+                <div className="col-md-6 mx-auto">
+                    <input
+                        type="text"
+                        className="form-control form-control-lg rounded-3 shadow-sm"
+                        placeholder="Search by title..."
+                        value={searchTerm}
+                        onChange={(e) => {
+                            setSearchTerm(e.target.value);
+                            setCurrentPage(1); // reset to first page when searching
+                        }}
+                    />
+                </div>
+            </div>
+
+            {/* Donations */}
             <div className="row g-4">
-                {currentDonations.map((donation) => (
-                    <div className="col-lg-4 col-md-6 col-12" key={donation.id}>
-                        <div className="card shadow-sm border-0 h-100 rounded-4 overflow-hidden">
-                            <a href={donation.image} target="_blank" rel="noopener noreferrer">
-                                <img
-                                    src={donation.image}
-                                    className="card-img-top"
-                                    alt={donation.title}
-                                    style={{ height: "200px", objectFit: "cover", cursor: "pointer" }}
-                                />
-                            </a>
-                            <div className="card-body">
-                                <h5 className="card-title fw-bold">{donation.title}</h5>
-                                <p className="text-muted small mb-2">{donation.date}</p>
-                                <p className="card-text">{donation.description}</p>
+                {currentDonations.length > 0 ? (
+                    currentDonations.map((donation) => (
+                        <div className="col-lg-4 col-md-6 col-12" key={donation.id}>
+                            <div className="card shadow-sm border-0 h-100 rounded-4 overflow-hidden">
+                                <a href={donation.image} target="_blank" rel="noopener noreferrer">
+                                    <img
+                                        src={donation.image}
+                                        className="card-img-top"
+                                        alt={donation.title}
+                                        style={{ height: "200px", objectFit: "cover", cursor: "pointer" }}
+                                    />
+                                </a>
+                                <div className="card-body">
+                                    <h5 className="card-title fw-bold">{donation.title}</h5>
+                                    <p className="text-muted small mb-2">{donation.date}</p>
+                                    <p className="card-text">{donation.description}</p>
+                                </div>
                             </div>
                         </div>
+                    ))
+                ) : (
+                    <div className="text-center py-5">
+                        <h5 className="fw-semibold text-muted">No donations found.</h5>
                     </div>
-                ))}
+                )}
             </div>
 
-            <div className="d-flex justify-content-center mt-4">
-                <nav>
-                    <ul className="pagination">
-                        <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                            <button
-                                className="page-link"
-                                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                            >
-                                Prev
-                            </button>
-                        </li>
-
-                        {[...Array(totalPages)].map((_, i) => (
-                            <li className={`page-item ${currentPage === i + 1 ? "active" : ""}`} key={i}>
-                                <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
-                                    {i + 1}
+            {/* Pagination */}
+            {filteredDonations.length > itemsPerPage && (
+                <div className="d-flex justify-content-center mt-4">
+                    <nav>
+                        <ul className="pagination">
+                            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                                <button
+                                    className="page-link"
+                                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                                >
+                                    Prev
                                 </button>
                             </li>
-                        ))}
 
-                        <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                            <button
-                                className="page-link"
-                                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                            >
-                                Next
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                            {[...Array(totalPages)].map((_, i) => (
+                                <li
+                                    className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
+                                    key={i}
+                                >
+                                    <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
+                                        {i + 1}
+                                    </button>
+                                </li>
+                            ))}
+
+                            <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                                <button
+                                    className="page-link"
+                                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                                >
+                                    Next
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            )}
         </div>
     );
 }
