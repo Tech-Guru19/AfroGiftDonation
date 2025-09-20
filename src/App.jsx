@@ -35,13 +35,13 @@ function App() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/donate">
-                  Donate
+                <Link className="nav-link" to="/update">
+                  Blogs
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/update">
-                  Blogs
+                <Link className="nav-link" to="/donate">
+                  Donate
                 </Link>
               </li>
             </ul>
