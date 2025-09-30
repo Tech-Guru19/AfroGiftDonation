@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: './', // ensures assets load correctly from any host
   server: {
     host: true,
     port: 5173,
