@@ -22,7 +22,6 @@ function EmploymentPage() {
   return (
     <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
       <div className="container text-dark">
-        {/* Breadcrumb */}
         <div className="d-flex justify-content-end mb-4">
           <span
             style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
@@ -33,7 +32,6 @@ function EmploymentPage() {
           / <span style={{ color: "#173321" }}>Employment</span>
         </div>
 
-        {/* Header */}
         <div className="text-center mb-5">
           <h2 className="fw-bold display-5" style={{ color: "#173321" }}>
             AfroGift Employment Opportunities
@@ -43,7 +41,6 @@ function EmploymentPage() {
           </p>
         </div>
 
-        {/* Image + Info */}
         <div className="row align-items-center mb-5">
           <div className="col-md-6 mb-4 mb-md-0">
             <img
@@ -72,7 +69,6 @@ function EmploymentPage() {
 
         <hr className="my-5" />
 
-        {/* Features */}
         <div className="row text-center mb-5">
           <div className="col-md-4 mb-4">
             <FaClipboardList size={40} className="text-success mb-3" />
@@ -91,7 +87,6 @@ function EmploymentPage() {
           </div>
         </div>
 
-        {/* How It Works */}
         <div className="bg-white p-4 rounded shadow mb-5">
           <h4 className="fw-bold mb-4">How It Works</h4>
           <ul className="list-unstyled">
@@ -113,7 +108,6 @@ function EmploymentPage() {
           </ul>
         </div>
 
-        {/* Call to Action */}
         <div className="text-center">
           <h4 className="fw-bold mb-3">Join the AfroGift Movement</h4>
           <p className="text-muted">Take part in meaningful projects, earn rewards, and make a real difference in communities worldwide.</p>
@@ -142,7 +136,6 @@ function EmploymentInterest() {
   const navigate = useNavigate();
   return (
     <div className="container py-5">
-      {/* Breadcrumb */}
       <div className="d-flex justify-content-start mb-4">
         <span
           style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
@@ -189,7 +182,6 @@ function AdminSetup() {
   const navigate = useNavigate();
   return (
     <div className="container py-5">
-      {/* Breadcrumb */}
       <div className="d-flex justify-content-start mb-4">
         <span
           style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
@@ -333,7 +325,6 @@ function EmployeeJobs() {
   const navigate = useNavigate();
   return (
     <div className="container py-5">
-      {/* Breadcrumb */}
       <div className="d-flex justify-content-start mb-4">
         <span
           style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
@@ -387,7 +378,6 @@ function EmployeeJobDetails({ id }) {
   if (!job) return <p>Job not found</p>;
 
   const handleApply = () => {
-    // For now, assume user is not logged in
     navigate("/employment/interest", { state: { jobId: job.id } });
   };
 
@@ -425,7 +415,6 @@ function EmployeeContracts() {
   const navigate = useNavigate();
   return (
     <div className="container py-5">
-      {/* Breadcrumb */}
       <div className="d-flex justify-content-start mb-4">
         <span
           style={{ cursor: "pointer", color: "#28a745", fontWeight: "bold" }}
